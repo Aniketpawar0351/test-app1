@@ -9,6 +9,10 @@ app.get('/',(req, res)=>{
 });
 app.listen(port,()=>console.log("hellow word"));
 
+app.get('/sensor_data/:api_key/:temp',(req,res)=>{
+    res.sendStatus(200);
+    console.log(req.params);
+});
 app.get('/even',(req,res)=>
 {
     const even=arr.filter((num)=>num%2==0);
