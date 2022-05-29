@@ -1,6 +1,6 @@
 import express from 'express';
 const app = express();
-const port= 5000;
+const port=process.env.PORT || 3000;
 const databaseURL="mongodb://localhost:27017/sensor_data";
 
 app.listen(port,()=>console.log("hellow word"));
@@ -22,12 +22,10 @@ app.get('/',(req, res)=>{
 app.get('/sensor_data/:api_key/:s_data',(req,res)=>{
     const {api_key,s_data}=req.params;
     console.log(s_data);
-    if(api_key=='cn_grp3')
-    {
+
         //res.send("hello"+s_data);
-        myfun.createDoc(s_data);
-        res.status(200).send("ok");
+        //myfun.createDoc(s_data);
+        res.status(200).send("hello");
         console.log(req.params);
-    }
     
 });
