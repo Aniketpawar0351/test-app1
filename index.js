@@ -21,7 +21,7 @@ app.get('/',(req, res)=>{
     res.send(result);
 });
 
-app.get('/sensor_data/:api_key/:s_data',(req,res)=>{
+app.post('/sensor_data/:api_key/:s_data',(req,res)=>{
     const {api_key,s_data}=req.params;
     if(api_key=='cn_grp3')
     {
