@@ -23,11 +23,13 @@ app.get('/',(req, res)=>{
 
 app.post('/sensor_data/:api_key/:s_data',(req,res)=>{
     const {api_key,s_data}=req.params;
+    console.log(s_data);
     if(api_key=='cn_grp3')
     {
-        myfun.createDoc(s_data);
-        res.status(200).send("ok");
-        console.log(req.params);
+        res.send(s_data);
+        //myfun.createDoc(s_data);
+       // res.status(200).send("ok");
+       // console.log(req.params);
     }
     
 });
