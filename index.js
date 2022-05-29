@@ -25,7 +25,7 @@ app.get('/sensor_data/:api_key/:s_data',(req,res)=>{
 
         //res.send("hello"+s_data);
         //myfun.createDoc(s_data);
-        res.status(200).send("hello");
+        res.status(201).send("hello");
         console.log(req.params);
     
 });
