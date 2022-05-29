@@ -15,21 +15,19 @@ connectDB(databaseURL);
 
 
 app.get('/',(req, res)=>{
-   
-    const result=myfun.all_records();
-    console.log(result);
-    res.send(result);
+    res.status(200).send("ok");
+    console.log("hello");
 });
 
-app.post('/sensor_data/:api_key/:s_data',(req,res)=>{
+app.get('/sensor_data/:api_key/:s_data',(req,res)=>{
     const {api_key,s_data}=req.params;
     console.log(s_data);
     if(api_key=='cn_grp3')
     {
-        res.send(s_data);
-        //myfun.createDoc(s_data);
-       // res.status(200).send("ok");
-       // console.log(req.params);
+        //res.send("hello"+s_data);
+        myfun.createDoc(s_data);
+        res.status(200).send("ok");
+        console.log(req.params);
     }
     
 });
