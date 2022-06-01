@@ -52,16 +52,32 @@
   <div id="t1">
     <h2 style="margin-left: 6%;"> Water Tank 1<h2>
   <div id="tank1"></div>
-  <h2 style="margin-left:11%;"><%= tl1 %> %</h2>
+  <h2 style="margin-left:11%;" id="th1"><%= tl1 %> %</h2>
 </div>
   <div id="t2">
     <h2 style="margin-left:13%;" id="gg">Water Tank 2</h2>
   <div id="tank2"></div>
-  <h2 style="margin-left:21%;"><%= tl2 %> %</h2>
+  <h2 style="margin-left:21%;" id="th2"><%= tl2 %> %</h2>
 </div>
 <script type="text/javascript">
   document.getElementById("tank1").style.setProperty("--color1", "<%= tl1%>%");
   document.getElementById("tank2").style.setProperty("--color2", "<%= tl2%>%");
+  setInterval(function() {
+    var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+         const obj=JSON.parse(xhttp.response);
+         //console.log(obj);
+         document.getElementById("tank1").style.setProperty("--color1", obj[0].level1+"%");
+         document.getElementById("tank2").style.setProperty("--color2", obj[0].level2+"%");
+         document.getElementById("th1").innerHTML=obj[0].level1;
+         document.getElementById("th2").innerHTML=obj[0].level2;
+      }
+      };
+      xhttp.open("GET", "http://localhost:3000/update", true);
+      xhttp.send();
+  }, 500)
+      
   </script>
 </body>
 </html>

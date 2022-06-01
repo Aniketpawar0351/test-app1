@@ -28,6 +28,12 @@ app.get('/',(req, res)=>{
     });
 });
 
+app.get('/update',(req,res)=>{
+    const result1=myfun.all_records(); 
+    result1.then((value)=>{
+           res.send(value);
+    });
+})
 app.get('/sensor_data/:api_key/:tank1/:tank2',(req,res)=>{
     const {api_key,tank1,tank2}=req.params;
     console.log(tank1,tank2);

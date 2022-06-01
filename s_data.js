@@ -15,7 +15,7 @@ export const sensor_data_model = mongoose.model('sensors_data',sensor_dataSchema
 export const all_records= async ()=>{
     try{
         const result=await sensor_data_model.find().sort({_id:-1}).limit(1);
-        console.log(result);
+        // console.log(result);
         return result;
 
     }catch(error){
