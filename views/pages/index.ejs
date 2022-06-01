@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+  <style>
+    :root {
+  --color1: 0%; 
+  --color2: 0%;
+  }
+  #tank1 {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    background: #000;
+    overflow: hidden;
+  }
+  #tank1::before {
+    content: '';
+    position: absolute;
+    background: #04ACFF;
+    width: 100%;
+    bottom: 0;
+    height: var(--color1);
+  }
+  #tank2 {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    background: #000;
+    overflow: hidden;
+  }
+  #tank2::before {
+    content: '';
+    position: absolute;
+    background: #04ACFF;
+    width: 100%;
+    bottom: 0;
+    height: var(--color2);
+ 
+  }
+
+#t1{
+  margin-left: 20%;
+}
+#t2{
+  margin-left: 60%;
+  margin-top:  -27.3%;
+}
+</style>
+</head>
+<body>
+  <br>
+  <div id="t1">
+    <h2 style="margin-left: 6%;"> Water Tank 1<h2>
+  <div id="tank1"></div>
+  <h2 style="margin-left:11%;"><%= tl1 %> %</h2>
+</div>
+  <div id="t2">
+    <h2 style="margin-left:13%;" id="gg">Water Tank 2</h2>
+  <div id="tank2"></div>
+  <h2 style="margin-left:21%;"><%= tl2 %> %</h2>
+</div>
+<script type="text/javascript">
+  document.getElementById("tank1").style.setProperty("--color1", "<%= tl1%>%");
+  document.getElementById("tank2").style.setProperty("--color2", "<%= tl2%>%");
+  </script>
+</body>
+</html>
