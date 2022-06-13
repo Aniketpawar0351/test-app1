@@ -19,8 +19,8 @@ import {join} from 'path';
 app.get('/',(req, res)=>{
     const result1=myfun.all_records(); 
     result1.then((value)=>{
-            const t1=value[0].level1;
-            const t2=value[0].level2;
+            const t1=Math.round((value[0].level1)/2.4);
+            const t2=Math.round((value[0].level2)/2.4);
            console.log(value[0].level1);
            console.log(value[0].level2);
            res.render('pages/index',{tl1:t1,tl2:t2
