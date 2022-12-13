@@ -1,7 +1,7 @@
 import express from 'express';
 const app = express();
-// const port=process.env.PORT || 3000;
-const port=3000;
+const port=process.env.PORT || 3000;
+//const port=3000;
 // const databaseURL="mongodb://localhost:27017/vehicle_data";
 const databaseURL="mongodb+srv://cn_grp3:cn_grp3@cluster0.bf5bawq.mongodb.net/?retryWrites=true&w=majority";
 
