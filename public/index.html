@@ -1,76 +1,8 @@
 <!doctype html>
 <html>
 <head>
-  <style>
-    :root {
-  --color: yellow; 
-  }
-  #tank1 {
-    width: 300px;
-    height: 300px;
-    position: relative;
-    background: #000;
-    overflow: hidden;
-    --check_height1: 20%;
-  }
-  #tank1::before {
-    content: '';
-    position: absolute;
-    background: #04ACFF;
-    width: 100%;
-    bottom: 0;
-    height: var(--check_height1);
-  }
-  #tank2 {
-    width: 300px;
-    height: 300px;
-    position: relative;
-    background: #000;
-    overflow: hidden;
-    --check_height2: 10%;
-  }
-  #tank2::before {
-    content: '';
-    position: absolute;
-    background: #04ACFF;
-    width: 100%;
-    bottom: 0;
-    height: var('<%= tl1 %>');
- 
-  }
-
-#t1{
-  margin-left: 20%;
-}
-#t2{
-  margin-left: 60%;
-  margin-top:  -27.3%;
-}
-#gg{
-  color: var(--color);
-}
-</style>
-<script type="text/javascript">
-  document.getElementById("gg").style.setProperty("--color", "blue");
-  </script>
 </head>
 <body>
-  <script type="text/javascript">
-    document.getElementById("gg").style.setProperty("--color", "blue");
-    </script>
-  <br>
-  <div id="t1">
-    <h2 style="margin-left: 6%;"> Water Tank 1<h2>
-  <div id="tank1"></div>
-  <h2 style="margin-left:11%;"><%= tl1 %> %</h2>
-</div>
-  
-    <h2 style="margin-left:13%;" id="gg">Water Tank 2</h2>
-  <div id="tank2">
-  <h2 style="margin-left:21%;"><%= tl2 %> %</h2>
-</div>
-<script type="text/javascript">
-  document.getElementById("gg").style.setProperty("--color", "blue");
-  </script>
+
 </body>
 </html>

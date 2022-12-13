@@ -1,83 +1,91 @@
 <!doctype html>
-<html>
+  <html lang="en" dir="ltr">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/menus.css">
   <style>
-    :root {
-  --color1: 0%; 
-  --color2: 0%;
-  }
-  #tank1 {
-    width: 300px;
-    height: 300px;
-    position: relative;
-    background: #000;
-    overflow: hidden;
-  }
-  #tank1::before {
-    content: '';
-    position: absolute;
-    background: #04ACFF;
-    width: 100%;
-    bottom: 0;
-    height: var(--color1);
-  }
-  #tank2 {
-    width: 300px;
-    height: 300px;
-    position: relative;
-    background: #000;
-    overflow: hidden;
-  }
-  #tank2::before {
-    content: '';
-    position: absolute;
-    background: #04ACFF;
-    width: 100%;
-    bottom: 0;
-    height: var(--color2);
- 
-  }
+  body{
+  background: #E0EAFC;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #CFDEF3, #E0EAFC);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #CFDEF3, #E0EAFC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }  
 
-#t1{
-  margin-left: 20%;
-}
-#t2{
-  margin-left: 60%;
-  margin-top:  -27.3%;
-}
-</style>
+body {
+    color: #272727;
+    font-family: 'Quicksand', serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    padding: 1rem;
+  }
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+  
+  </style>
 </head>
 <body>
-  <br>
-  <div id="t1">
-    <h2 style="margin-left: 6%;"> Water Tank 1<h2>
-  <div id="tank1"></div>
-  <h2 style="margin-left:11%;" id="th1"><%= tl1 %> %</h2>
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+  <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="/">&nbsp;Home</a>
+  <a href="/recentrecord">&nbsp;Recent Vehicle Record</a>
+  <a href="allrecord">&nbsp;All Vehicle Record</a>
+  <a href="unrecognized">&nbsp;Unrecognized Vehicle</a>
+  <a href="newvehicle">&nbsp;Register New Vehicle</a>
+
 </div>
-  <div id="t2">
-    <h2 style="margin-left:13%;" id="gg">Water Tank 2</h2>
-  <div id="tank2"></div>
-  <h2 style="margin-left:21%;" id="th2"><%= tl2 %> %</h2>
-</div>
-<script type="text/javascript">
-  document.getElementById("tank1").style.setProperty("--color1", "<%= tl1%>%");
-  document.getElementById("tank2").style.setProperty("--color2", "<%= tl2%>%");
-  setInterval(function() {
-    var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-         const obj=JSON.parse(xhttp.response);
-         //console.log(obj);
-         document.getElementById("tank1").style.setProperty("--color1", obj[0].level1+"%");
-         document.getElementById("tank2").style.setProperty("--color2", obj[0].level2+"%");
-         document.getElementById("th1").innerHTML=obj[0].level1;
-         document.getElementById("th2").innerHTML=obj[0].level2;
-      }
-      };
-      xhttp.open("GET", "https://cn-grp3.herokuapp.com/update", true);
-      xhttp.send();
-  }, 500)
-      
-  </script>
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "350px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
 </body>
 </html>

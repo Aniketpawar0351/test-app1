@@ -1,0 +1,130 @@
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+      <link rel="stylesheet" href="css/menus.css">
+       <style type="text/css">
+   
+         body{
+           background: #E0EAFC;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #CFDEF3, #E0EAFC);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #CFDEF3, #E0EAFC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   
+         }
+       .form-rounded {
+      border-radius: 0.6rem;
+      }
+    .container{
+      margin-top: 3%;
+      width: 350px;
+      border: ridge 1.4px white;
+      padding: 20px;
+    }
+    body {
+    color: #272727;
+    font-family: 'Quicksand', serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    padding: 1rem;
+  }
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+      </style>
+    </head>
+    <body>
+     <h2 style="text-align:center;">Unrecognized Vehicle Data</h2>
+   
+     <br>
+     <br>
+     <br>
+       <input class="form-rounded" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search here.." title="Type in a name">
+       <br>
+      <div  id="myTable" class="table-responsive">
+       <table   class="table table-bordered  table-highligh table-hover">
+   
+       <tr>
+         <th class="table-dark">Sr No</th>
+         <th class="table-dark">Vehicle Number</th>
+         <th class="table-dark">Speed</th>
+         <th class="table-dark" >Date</th>
+       </tr>
+       <% var i=1 %>
+      <% data.forEach((item)=>{ %>
+      <tr>
+      <td><%= i++ %></td>
+      <td><%= item.unrnumber_p %></td>
+      <td><%= item.unrspeed %></td>
+      <td><%= item.unrdate %></td>
+      </tr>
+      <% }) %>
+    </table>
+   </div>
+   <script type="text/javascript">
+   $('#myTable tbody tr').click(function() {
+       $(this).addClass('active').siblings().removeClass('active');
+   });
+   </script>
+    <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+   </body>
+   </html>

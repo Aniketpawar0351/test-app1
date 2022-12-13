@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+   <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style type="text/css">
+    .container{
+      margin-top: 3%;
+      width: 350px;
+      border: ridge 1.4px white;
+      padding: 20px;
+    }
+    body{
+      background: #E0EAFC;  /* fallback for old browsers */
+ background: -webkit-linear-gradient(to right, #CFDEF3, #E0EAFC);  /* Chrome 10-25, Safari 5.1-6 */
+ background: linear-gradient(to right, #CFDEF3, #E0EAFC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    }
+ </style>
+ </head>
+ <body>
+
+
+   <div class="container">
+     <h2>Add New Vehicle</h2>
+   <form action="newvehicle_submited" method="post">
+     <div class="form-group">
+     <label for="bname">Name Of User</label>
+     <input type="text" class="form-control" id="exampleInputfirstname" name="uname" required>
+   </div>
+   <div class="form-group">
+    <label for="breason">State</label>
+    <input type="text" class="form-control" id="exampleInputEmail1"  name="state" required>
+    </div>
+    <div class="form-group">
+      <label for="breason">Vehicle Number</label>
+      <input type="text" class="form-control" id="exampleInputEmail1"  name="vnumber" required>
+      </div>
+   <div class="form-group">
+    <label for="email">Email Address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" required>
+  </div>
+   <div class="form-group">
+     <label for="bphone_no">Mobile No</label>
+     <input type="test" class="form-control" id="exampleInputphoneno" name="bphone_no" required>
+   </div>
+   <div class="form-group">
+   <label for="bdate">Date</label>
+   <input type="date" class="form-control" id="exampleInputEmail1"  name="bdate" required>
+   </div>
+   <button type="submit" class="btn btn-primary" id="submit_p"  onclick="openNav()" name="submit_p">Submit</button>
+   </form>
+   </div>
+
+   <script>
+    function openNav() {
+  //    Swal.fire({
+  //    title: 'Amount Added',
+  //    icon:'success',
+  //    showDenyButton: true,
+  //    showCancelButton: false,
+  //    confirmButtonText: `Add More`,
+  //    denyButtonText: `No Thanks`,
+  //  }).then((result) => {
+  //  if (result.isConfirmed) {
+  //    setTimeout(function() {
+  //    openWindow = window.open('newvehicle', '_self');
+  //  }, 300);
+  //  } else if (result.isDenied) {
+  //    setTimeout(function() {
+  //    openWindow = window.open('/', '_self');
+  //    }, 300);
+  //  }else {
+  //    setTimeout(function() {
+  //    openWindow = window.open('newvehicle', '_self');
+  //    }, 300);
+  //  }
+  //  })
+
+  //   //   document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+    // function closeNav() {
+    //   document.getElementById("mySidenav").style.width = "0";
+    // }
+    </script>
+ 
+ 
+   </body>
+   </html>
+
+
+
