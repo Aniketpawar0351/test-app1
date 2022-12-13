@@ -17,7 +17,6 @@ connectDB(databaseURL);
 
 app.set('view engine', 'ejs');
 import {join} from 'path';
-import { checkPrime } from 'crypto';
 
 app.use(express.urlencoded({extended:false}));
 
