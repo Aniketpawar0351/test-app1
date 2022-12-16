@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import nodemailer from 'nodemailer';
 
 //defining schema
 const vehicle_dataSchema1 = new mongoose.Schema({
@@ -29,7 +30,7 @@ export const vehicle_data_model3 = mongoose.model('user_vehicle_data',vehicle_da
 
 export const all_records1= async (res)=>{
     try{
-        const result=await vehicle_data_model1.find().limit(5);
+        const result=await vehicle_data_model1.find();
         //console.log(result);
         res.render("pages/recent_record",{data: result});
         return {result};
@@ -111,14 +112,72 @@ export const createDoc3 = async(var1,var2,var3,var4,var5)=>{
 }
 
 
-export function check(var1){
-    const result= vehicle_data_model3.find({unumber_p: var1});
-    console.log(result);
-    if(result.length===0)
-    {
-        console.log("NI")
-        return true;
+export const mail_to_user = async(var1)=>{
+    try{
+        
+        var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'aniket.pawar19@vit.edu',
+            pass: 'Aniket@1234'
+        }
+        });
+
+        var mailOptions = {
+        from: 'aniket.pawar19@vit.edu',
+        to: var1,
+        subject: 'sending email using nodemailer',
+        text: `hi ppt hua kya`
+        };
+
+        transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+        });
+    }catch(error){
+        console.log(error);
     }
-    else return false;
 }
+
+export const check = async(var1,var2,res)=>{
+    try{
+        const result=await vehicle_data_model3.find({"unumber_p": var1});
+       console.log(result.length);
+       if(result.length>0)
+       {
+            console.log(result[0].uemail)
+            mail_to_user(result[0].uemail);
+            createDoc1(var1,var2);
+       }
+       else
+       {
+            createDoc2(var1,var2);
+       }
+    }catch(error){
+        console.log(error);
+    }
+}
+// if(myfun.check(number_p))
+// {
+    
+// }
+// else
+// {
+    
+// }
+
+
+// export function check(var1){
+//     const result= vehicle_data_model3.find();
+//     console.log(result);
+//     if(result.length!=0)
+//     {
+//         console.log("yes")
+//         return true;
+//     }
+//     else return false;
+// }
 

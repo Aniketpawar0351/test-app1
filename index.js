@@ -3,7 +3,7 @@ const app = express();
 const port=process.env.PORT || 3000;
 //const port=3000;
 
-// const databaseURL="mongodb://localhost:27017/vehicle_data";
+//const databaseURL="mongodb://localhost:27017/vehicle_data";
 const databaseURL="mongodb+srv://cn_grp3:cn_grp3@cluster0.bf5bawq.mongodb.net/?retryWrites=true&w=majority";
 
 app.listen(port,()=>console.log("hello world"));
@@ -73,16 +73,9 @@ app.get('/vehicle_data/:api_key/:number_p/:speed',(req,res)=>{
     //console.log(number_p,speed);
     if(api_key=="IC_C"){
         //myfun.createDoc1(number_p,speed);
+        myfun.check(number_p,speed,res)
 
-        if(myfun.check(number_p))
-        {
-            console.log("yes")
-            myfun.createDoc1(number_p,speed);
-        }
-        else
-        {
-            myfun.createDoc2(number_p,speed);
-        }
+        
         
         res.status(200).send("hello");
         //console.log(req.params);
