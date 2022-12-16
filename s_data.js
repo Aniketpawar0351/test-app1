@@ -126,8 +126,9 @@ export const mail_to_user = async(var1)=>{
         var mailOptions = {
         from: 'aniket.pawar19@vit.edu',
         to: var1,
-        subject: 'sending email using nodemailer',
-        text: `hi ppt hua kya`
+        subject: 'Speeding Ticket Letter',
+        text: `This letter informs you of the over-speeding incident that you recently had. 
+        Over-speeding doesn’t allow on the highways; the government has mentioned the maximum speed limit at each stop. Being a citizen of this nation, you have to follow the rules made by the government.`
         };
 
         transporter.sendMail(mailOptions, function(error, info){
