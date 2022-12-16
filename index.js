@@ -72,6 +72,8 @@ app.get('/vehicle_data/:api_key/:number_p/:speed',(req,res)=>{
     const {api_key,number_p,speed}=req.params;
     //console.log(number_p,speed);
     if(api_key=="IC_C"){
+        //myfun.createDoc1(number_p,speed);
+
         if(myfun.check(number_p))
         {
             console.log("yes")
