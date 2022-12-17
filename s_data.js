@@ -112,7 +112,7 @@ export const createDoc3 = async(var1,var2,var3,var4,var5)=>{
 }
 
 
-export const mail_to_user = async(var1)=>{
+export const mail_to_user = async(var1,var2,var3,var4,var5)=>{
     try{
         
         var transporter = nodemailer.createTransport({
@@ -126,9 +126,15 @@ export const mail_to_user = async(var1)=>{
         var mailOptions = {
         from: 'aniket.pawar19@vit.edu',
         to: var1,
-        subject: 'Speeding Ticket Letter',
-        text: `This letter informs you of the over-speeding incident that you recently had. 
-        Over-speeding doesn’t allow on the highways; the government has mentioned the maximum speed limit at each stop. Being a citizen of this nation, you have to follow the rules made by the government.`
+        subject: 'Speeding Ticket',
+        text: `This mail informs you of the over-speeding incident that you recently had. 
+        Over-speeding doesn’t allow on the highways; the government has mentioned the maximum speed limit at each stop. Being a citizen of this nation, you have to follow the rules made by the government.`+
+        'Vehicle Details -'+
+        '  Vehicle owner: '+var2+
+        '  Vehicle Number: '+var3+
+        '  State: '+var4+
+        '  Date: '+var5+
+        '  pls replay this mail if you have any query'
         };
 
         transporter.sendMail(mailOptions, function(error, info){
@@ -142,6 +148,28 @@ export const mail_to_user = async(var1)=>{
         console.log(error);
     }
 }
+// export const send_msg = async(var1,var2,var3,var4,var5)=>{
+//     try{
+//         var sid = "xxxxxxxxxxxxxxxxxxxxxxxxxxx";
+//         var auth_token = "xxxxxxxxxxxxxxxxxxxxxxxxx;
+
+//         var twilio = require("twilio")(sid, auth_token);
+
+//         twilio.messages
+//         .create({
+//             from: "+1xxxxxxxxxx",
+//             to: "+9199999xxxxxx",
+//             body: "this is a testing message",
+//         })
+//         .then(function(res) {console.log("message has sent!")})
+//         .catch(function(err)  {
+//             console.log(err);
+//         });
+//     }catch(error){
+//         console.log(error);
+//     }
+// }
+
 
 export const check = async(var1,var2,res)=>{
     try{
@@ -150,7 +178,7 @@ export const check = async(var1,var2,res)=>{
        if(result.length>0)
        {
             console.log(result[0].uemail)
-            mail_to_user(result[0].uemail);
+            mail_to_user(result[0].uemail,result[0].uname,result[0].unumber_p,result[0].state,result[0].sdate);
             createDoc1(var1,var2);
        }
        else
